@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
-
 
 Map<String, dynamic> countriesIsoCodes = {};
 Map<String, List<String>> cities = {};
@@ -10,9 +10,9 @@ Map<String, List<String>> cities = {};
 Future<List<String>?> getAllCountries() async {
   try {
     List<String>? countries = [];
+    String baseUrl = dotenv.env['BASE_URL'].toString();
     final response = await http.get(
-      Uri.parse(
-          'https://mycleanapp-backend-tgd5.onrender.com/setPrice/getActiveCities'),
+      Uri.parse('$baseUrl/setPrice/getActiveCities'),
       headers: {
         'accept': '*/*',
       },

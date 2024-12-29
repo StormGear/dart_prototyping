@@ -1,8 +1,7 @@
-import 'package:geolocator/geolocator.dart';
+import 'package:flutter_map_math/flutter_geo_math.dart';
 
-void nearestDriver() async {
-  List<Map<String, dynamic>> drivers = [
-  ];
+void nearestDriver() {
+  List<Map<String, dynamic>> drivers = [];
   Map<String, dynamic> userLoc = {
     'latitude': 5.72282776315656,
     'longitude': -0.2978469058871269
@@ -12,22 +11,25 @@ void nearestDriver() async {
     'latitude': 5.6674883,
     'longitude': -0.20804
   };
-  Map<String, dynamic> driver2Loc = {'lat': 5.694617, 'long': -0.20804};
+  Map<String, dynamic> driver2Loc = {
+    'latitude': 5.694617,
+    'longitude': -0.20804
+  };
 
-   // Calculate distances
-  double distanceToDriver1 = Geolocator.distanceBetween(
-    userLoc['latitude'],
-    userLoc['longitude'],
-    driver1Loc['latitude'],
-    driver1Loc['longitude'],
-  );
+  // Calculate distances
+  double distanceToDriver1 = FlutterMapMath().distanceBetween(
+      userLoc['latitude'],
+      userLoc['longitude'],
+      driver1Loc['latitude'],
+      driver1Loc['longitude'],
+      'meters');
 
-  double distanceToDriver2 = Geolocator.distanceBetween(
-    userLoc['latitude'],
-    userLoc['longitude'],
-    driver2Loc['latitude'],
-    driver2Loc['longitude'],
-  );
+  double distanceToDriver2 = FlutterMapMath().distanceBetween(
+      userLoc['latitude'],
+      userLoc['longitude'],
+      driver2Loc['latitude'],
+      driver2Loc['longitude'],
+      'meters');
 
   // Add drivers to the list with their distances
   drivers.add({'driver': 'Driver 1', 'distance': distanceToDriver1});
