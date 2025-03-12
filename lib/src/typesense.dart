@@ -8,7 +8,7 @@ void main() async {
 
 Future<void> typesense() async {
   // Replace with your configuration
-  final host = "velwu7fhs6c8bajqp-1.a1.typesense.net",
+  final host = "xxxxxxx.a1.typesense.net",
       protocol = Protocol.https;
   final config = Configuration(
     // Api key
