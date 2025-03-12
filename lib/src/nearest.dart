@@ -8,7 +8,7 @@ void nearestDriver() {
   };
 
   Map<String, dynamic> driver1Loc = {
-    'latitude': 5.6674883,
+    'latitude': 5.7174883,
     'longitude': -0.20804
   };
   Map<String, dynamic> driver2Loc = {
@@ -42,4 +42,18 @@ void nearestDriver() {
   for (var driver in drivers) {
     print('${driver['driver']} is ${driver['distance']} meters away');
   }
+}
+
+bool arePositionsWithinRadius(Map<String, dynamic> user, Map<String, dynamic> driver, double radius) {
+
+
+  // Calculate distances
+  double distanceToDriver1 = FlutterMapMath().distanceBetween(
+      user['latitude'],
+      user['longitude'],
+      driver['latitude'],
+      driver['longitude'],
+      'meters');
+
+  return distanceToDriver1 <= radius;
 }
